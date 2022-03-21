@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techno Vampire</title>
+    <link rel="icon" type="image/x-icon" href="https://yt3.ggpht.com/MzAlwcHz_lQMvU7r_PvqL2383goG-BZ04f9TULzT6YGlpyxx-7HMFSa1aIcwwMbHnCLdCrT2Hwk=s176-c-k-c0x00ffffff-no-rj">
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .header{
+            width: 100%;
+            height: 8vh;
+            position: fixed;
+            box-shadow: 0 0 2px black;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            z-index: 1;
+        }
+        #headertxt{
+            position: absolute;
+            left: 5%;
+        }
+
+        .shaders1can{
+            width: 70%;
+            height: 60%;
+            border-radius: 1vh;
+            position: absolute;
+            left: 10%;
+            top: 20%;
+            display: flex;
+        }
+        .shaders1can>img{
+            width: 70%;
+            height: 40vh;
+            position: absolute;
+            left: 15%;
+            top: 10%;
+        }
+        .shaders1can>h2{
+            
+            position: absolute;
+            left: 10%;
+            top:-10%;
+        }
+        .shaders1can button{
+            width: 50%;
+            height: 7vh;
+            background-color: #e44;
+            outline: none;
+            border: 0.3vh solid black;
+            position: absolute;
+            top: 50vh;
+            color: white;
+            text-decoration: none;
+            left: 20%;
+            font-weight: bold;
+            font-size: 2vh;
+        }
+        .shaders2can{
+            width: 70%;
+            height: 60%;
+            border-radius: 1vh;
+            position: absolute;
+            left: 10%;
+            top: 100%;
+            display: flex;
+        }
+        .shaders2can>img{
+            width: 70%;
+            height: 40vh;
+            position: absolute;
+            left: 15%;
+            top: 10%;
+        }
+        .shaders2can>h2{
+            
+            position: absolute;
+            left: 10%;
+            top:-10%;
+        }
+        .shaders2can button{
+            width: 50%;
+            height: 7vh;
+            background-color: #e44;
+            outline: none;
+            border: 0.3vh solid black;
+            position: absolute;
+            top: 50vh;
+            color: white;
+            text-decoration: none;
+            left: 20%;
+            font-weight: bold;
+            font-size: 2vh;
+        }
+        .shaders3can{
+            width: 70%;
+            height: 60%;
+            border-radius: 1vh;
+            position: absolute;
+            left: 10%;
+            top: 180%;
+            display: flex;
+        }
+        .shaders3can>img{
+            width: 70%;
+            height: 40vh;
+            position: absolute;
+            left: 15%;
+            top: 10%;
+        }
+        .shaders3can>h2{
+            
+            position: absolute;
+            left: 10%;
+            top:-10%;
+        }
+        .shaders3can button{
+            width: 50%;
+            height: 7vh;
+            background-color: #e44;
+            outline: none;
+            border: 0.3vh solid black;
+            position: absolute;
+            top: 50vh;
+            color: white;
+            text-decoration: none;
+            left: 20%;
+            font-weight: bold;
+            font-size: 2vh;
+        }
+        .shaders4can{
+            width: 70%;
+            height: 60%;
+            border-radius: 1vh;
+            position: absolute;
+            left: 10%;
+            top: 260%;
+            display: flex;
+        }
+        .shaders4can>img{
+            width: 70%;
+            height: 40vh;
+            position: absolute;
+            left: 15%;
+            top: 10%;
+        }
+        .shaders4can>h2{
+            
+            position: absolute;
+            left: 10%;
+            top:-10%;
+        }
+        .shaders4can button{
+            width: 50%;
+            height: 7vh;
+            background-color: #e44;
+            outline: none;
+            border: 0.3vh solid black;
+            position: absolute;
+            top: 50vh;
+            color: white;
+            text-decoration: none;
+            left: 20%;
+            font-weight: bold;
+            font-size: 2vh;
+        }
+        .shaders5can{
+            width: 70%;
+            height: 60%;
+            border-radius: 1vh;
+            position: absolute;
+            left: 10%;
+            top: 340%;
+            display: flex;
+        }
+        .shaders5can>img{
+            width: 70%;
+            height: 40vh;
+            position: absolute;
+            left: 15%;
+            top: 10%;
+        }
+        .shaders5can>h2{
+            
+            position: absolute;
+            left: 10%;
+            top:-10%;
+        }
+        .shaders5can button{
+            width: 50%;
+            height: 7vh;
+            background-color: #e44;
+            outline: none;
+            border: 0.3vh solid black;
+            position: absolute;
+            top: 50vh;
+            color: white;
+            text-decoration: none;
+            left: 20%;
+            font-weight: bold;
+            font-size: 2vh;
+        }
+        #chatbtn{
+            width: 15vh;
+            height: 6vh;
+            background-color: yellow;
+            color: black;
+            outline: none;
+            border: 1px solid;
+            left: 70%;
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.5vh;
+        }
+        #fullchat{
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            z-index: 2;
+            display: none;
+            overflow: scroll;
+        }
+        #sendinput{
+            width: 70%;
+            height: 7vh;
+            outline: none;
+            border: 2px solid black;
+            color: black;
+            font-weight: bold;
+            position: absolute;
+            top: 85%;
+            left:3%;
+        }
+        #sendbtn{
+            width: 15vh;
+            height: 6vh;
+            background-color: yellow;
+            color: black;
+            outline: none;
+            border: 1px solid;
+            left: 76%;
+            position: absolute;
+            font-weight: bold;
+            top: 86%;
+        }
+
+        .card{
+            width: 70%;
+            height: 10vh;
+            position: relative;
+            top: 5vh;
+            margin-top: 5vh;
+            background-color: whitesmoke;
+            left: 5vh;
+        }
+        #nametxt{
+            position: relative;
+            left: 5%;
+            top: 2vh;
+
+        }
+        #camtxt{
+            position: relative;
+            left: 5%;
+            top: 2vh;
+            
+        }
+       .cardcan{
+        width: 100%;
+            height: 100%;
+            background-color: white;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            z-index: 2;
+       }
+        .card2{
+            width: 70%;
+            height: 60%;
+            background-color: whitesmoke;
+            box-shadow: 0 0 2px black;
+            border-radius: 1vh;
+            position: absolute;
+            left: 10%;
+            top: 20%;
+            justify-content: center;
+            display: flex;
+        }
+        #noob{
+            width: 20vh;
+            height: 20vh;
+            border-radius: 20vh;
+            position: absolute;
+            top: 5vh;
+        }
+        #text{
+            position: absolute;
+            top: 25vh;
+        }
+        #subs{
+            position: absolute;
+            top: 30vh;
+        }
+        #des{
+            position: absolute;
+            top: 35vh;
+            font-size: 1vh;
+        }
+        #sub{
+            width: 40%;
+            height: 7vh;
+            background-color: #e44;
+            outline: none;
+            border: 0.3vh solid black;
+            position: absolute;
+            top: 50vh;
+            color: white;
+            text-decoration: none;
+        }
+        .card2 a{
+            color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2vh;
+        }
+        #vmp{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3 id="headertxt">Techno Vampire</h3>
+        <button id="chatbtn"onclick='opch()'>Vampire Chat</button>
+    </div>
+    <div class="cardcan">
+    <div class='card2'>
+        <img id='noob'src='https://yt3.ggpht.com/MzAlwcHz_lQMvU7r_PvqL2383goG-BZ04f9TULzT6YGlpyxx-7HMFSa1aIcwwMbHnCLdCrT2Hwk=s176-c-k-c0x00ffffff-no-rj'>
+           <h3 id='text'>Techno Vampire</h3>
+           <h5 id='subs'>Subscribe To Continue</h5>
+           <h6 id='des'>Subscribe Tehno Vampire To Continue</h6>
+           <a href='https://youtu.be/sXWlKuPCbJU'onclick='op()'><button id='sub'>Subscribe</buuton></a>
+        </div>
+        </div>
+    <div class="shaders1can">
+        <h2>Shaders</h2>
+        <img src="https://i.ytimg.com/an_webp/LoqNpxmcsg4/mqdefault_6s.webp?du=3000&sqp=CO6P4pEG&rs=AOn4CLDbKEAsB2iW5lAw_yYVsqdxPDUljQ">
+       <a href="https://mcpedl.com/optimum-realism-r5-pe/"><button>Download</button></a>
+    </div>
+    <div class="shaders2can">
+        <h2>Techno Gamerz World</h2>
+        <img src="https://i.ytimg.com/an_webp/JqWQ3dDvLrQ/mqdefault_6s.webp?du=3000&sqp=CND24ZEG&rs=AOn4CLAvVb2dkKZrw3GZNhw6gaZ5uoW_hQ">
+       <a href="https://www.mediafire.com/file/51ny1nwodpixrar/Techno_Gamerz_minecraft_world_by_Techno_vampire%25282%2529.zip/file"><button>Download</button></a>
+    </div>
+    <div class="shaders3can">
+        <h2>Best Mods Video</h2>
+        <img src="https://i.ytimg.com/an_webp/fF3tblqtHJw/mqdefault_6s.webp?du=3000&sqp=CNyR4pEG&rs=AOn4CLAIxYko5Q8V0cktN6z5tFcxYqZYHg">
+       <a href="https://youtu.be/fF3tblqtHJw"><button>Watch Video</button></a>
+    </div>
+    <div class="shaders4can">
+        <h2>PVP Packs</h2>
+        <img src="https://i.ytimg.com/an_webp/Bz2AeT_Yc2g/mqdefault_6s.webp?du=3000&sqp=CNDt4ZEG&rs=AOn4CLAkaxLIfeXpghlHJKT5pITLyDe1Zw">
+       <a href="https://youtu.be/Bz2AeT_Yc2g"><button>Watch Video</button></a>
+    </div>
+    <div class="shaders4can">
+        <h2>PVP Packs</h2>
+        <img src="https://i.ytimg.com/an_webp/Bz2AeT_Yc2g/mqdefault_6s.webp?du=3000&sqp=CNDt4ZEG&rs=AOn4CLAkaxLIfeXpghlHJKT5pITLyDe1Zw">
+       <a href="https://youtu.be/Bz2AeT_Yc2g"><button>Watch Video</button></a>
+    </div>
+    <div class="shaders5can">
+        <h2>Shaders For Low End</h2>
+        <img src="https://i.ytimg.com/an_webp/uCfL70ylRzU/mqdefault_6s.webp?du=3000&sqp=CPeh4pEG&rs=AOn4CLBqrdIHLnwUZtKBEcwuTI4Fbi0hJg">
+       <a href="https://youtu.be/uCfL70ylRzU"><button>Watch Video</button></a>
+    </div>
+
+    <ul id="fullchat">
+        <input id="sendinput"placeholder='write your message here'>
+        <button id="sendbtn"onclick='v()'>Send</button>
+    </ul>
+<input id="vmp">
+    <script>
+         const firebaseConfig = {
+    apiKey: "AIzaSyDnTRGGSueiu4_8ElKd8KYGF46UMwYJ_qI",
+    authDomain: "vampire-bd4f0.firebaseapp.com",
+    projectId: "vampire-bd4f0",
+    storageBucket: "vampire-bd4f0.appspot.com",
+    messagingSenderId: "988372852317",
+    appId: "1:988372852317:web:b067a2167e06997a2977b4",
+    measurementId: "G-P3KVHCM3XY"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+window.onload=function(){
+    var lcv=localStorage.getItem('lc')
+    vmp.value=lcv
+    if(vmp.value=='lol'){
+        document.querySelector('.cardcan').style.display='none'
+
+    }else{
+        
+    }
+}
+  var name=prompt('Whats Your Name')
+function opch(){
+    fullchat.style.display='block'
+}
+
+function v(){
+    var message=document.getElementById('sendinput').value
+
+    var db=firebase.database()
+    db.ref('allchat').push().set({
+        'name':name,
+        'message':message
+    })
+}
+
+firebase.database().ref("allchat").on("child_added", function(snapshot) {
+
+
+var html = `
+          <div class="card">
+      <h5 id="nametxt">${snapshot.val().name}:</h5>
+      <h3 id="camtxt">${snapshot.val().message}</h3>
+     
+      </div>
+      `
+
+var places = document.getElementById("fullchat")
+places.innerHTML = html + places.innerHTML;
+
+
+});
+
+function op(){
+    document.querySelector('.cardcan').style.display='none'
+
+var lc=vmp.value='lol'
+localStorage.setItem('lc',lc)
+}
+    </script>
+</body>
+</html>
